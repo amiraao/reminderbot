@@ -20,7 +20,7 @@ logging.basicConfig(
 logger = logging.getLogger(__name__)
 
 # Токен бота - будет установлен через Railway Variables
-BOT_TOKEN = os.environ.get('BOT_TOKEN_REMINDER', '8543266583:AAFMsPSWjMW1ZqMwE_B2VqvJsyWUi35T1vM')
+BOT_TOKEN = os.environ.get('BOT_TOKEN_REMINDER')
 
 # Дни недели для повторения
 DAYS_OF_WEEK = {
