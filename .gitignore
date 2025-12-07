@@ -1,0 +1,33 @@
+# Python
+__pycache__/
+*.py[cod]
+*$py.class
+*.so
+.Python
+
+# Environment
+.env
+.venv
+env/
+venv/
+ENV/
+
+# Database
+*.db
+*.sqlite
+reminders.db
+
+# Logs
+*.log
+reminder_bot.log
+
+# IDE
+.vscode/
+.idea/
+*.swp
+*.swo
+
+# Telegram bot specific
+bot.log
+debug.log
+*.session
