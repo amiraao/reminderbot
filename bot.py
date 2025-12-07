@@ -8,6 +8,8 @@ from telegram.ext import Application, CommandHandler, MessageHandler, filters, C
 from datetime import datetime, timedelta
 import re
 from typing import Dict, List, Tuple, Optional
+from flask import Flask
+from threading import Thread
 
 # Настройка логирования для Railway
 logging.basicConfig(
@@ -1845,3 +1847,25 @@ def main():
 
 if __name__ == '__main__':
     main()
+
+app = Flask(__name__)
+
+@app.route('/')
+def home():
+    return "🤖 Telegram Reminder Bot is running!"
+
+@app.route('/health')
+def health():
+    return "OK", 200
+
+def run_flask():
+    port = int(os.environ.get("PORT", 8080))
+    app.run(host='0.0.0.0', port=port)
+
+if __name__ == '__main__':
+    # Запускаем Flask в отдельном потоке
+    flask_thread = Thread(target=run_flask, daemon=True)
+    flask_thread.start()
+    
+    # Запускаем бота
+    asyncio.run(main_async())
